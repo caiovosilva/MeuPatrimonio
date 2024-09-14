@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.User", "Ecommerce.User\Ecommerce.User.csproj", "{DC575B40-7007-43AF-BF79-4C643DB6CBF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
