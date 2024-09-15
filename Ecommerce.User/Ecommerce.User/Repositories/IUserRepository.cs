@@ -1,8 +1,7 @@
-﻿namespace ecommerce_user.Repositories
+﻿namespace ecommerce_user.Repositories;
+
+public interface IUserRepository
 {
-    public interface IUserRepository
-    {
-        Task<Entities.User?> GetByUsernameAsync(string username);
-        Task AddAsync(Entities.User user);
-    }
+    Task<Entities.User?> GetByUsernameAsync(string username);
+    Task AddAsync(Entities.User user);
 }

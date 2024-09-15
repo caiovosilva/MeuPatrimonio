@@ -1,27 +1,26 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ecommerce_user.Infrastructure
+namespace ecommerce_user.Infrastructure;
+
+public class UserDbContext : DbContext
 {
-    public class UserDbContext : DbContext
+    public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) {}
+
+    public DbSet<Entities.User> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) {}
+        modelBuilder.Entity<Entities.User>()
+            .HasKey(u => u.Id);
 
-        public DbSet<Entities.User> Users { get; set; }
+        modelBuilder.Entity<Entities.User>()
+            .Property(u => u.Username)
+            .IsRequired()
+            .HasMaxLength(50);
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Entities.User>()
-                .HasKey(u => u.Id);
-
-            modelBuilder.Entity<Entities.User>()
-                .Property(u => u.Username)
-                .IsRequired()
-                .HasMaxLength(50);
-
-            modelBuilder.Entity<Entities.User>()
-                .Property(u => u.Email)
-                .IsRequired()
-                .HasMaxLength(100);
-        }
+        modelBuilder.Entity<Entities.User>()
+            .Property(u => u.Email)
+            .IsRequired()
+            .HasMaxLength(100);
     }
 }

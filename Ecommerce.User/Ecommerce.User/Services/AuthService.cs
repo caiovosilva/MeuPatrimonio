@@ -7,30 +7,22 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ecommerce_user.Services;
 
-public class AuthService : IAuthService
+public class AuthService(IUserRepository userRepository, IConfiguration configuration)
+    : IAuthService
 {
-    private readonly IUserRepository _userRepository;
-    private readonly IConfiguration _configuration;
-
-    public AuthService(IUserRepository userRepository, IConfiguration configuration)
-    {
-        _userRepository = userRepository;
-        _configuration = configuration;
-    }
-
     public async Task<Result> RegisterAsync(RegisterModel model)
     {
-        var existingUser = await _userRepository.GetByUsernameAsync(model.Username);
+        var existingUser = await userRepository.GetByUsernameAsync(model.Username);
         if (existingUser != null) return Result.Failure("Username already taken");
 
         var user = new Entities.User(model.Username, model.Email, BCrypt.Net.BCrypt.HashPassword(model.Password));
-        await _userRepository.AddAsync(user);
+        await userRepository.AddAsync(user);
         return Result.Success("User registered successfully");
     }
 
     public async Task<string?> LoginAsync(LoginModel model)
     {
-        var user = await _userRepository.GetByUsernameAsync(model.Username);
+        var user = await userRepository.GetByUsernameAsync(model.Username);
         if (user == null || !BCrypt.Net.BCrypt.Verify(model.Password, user.PasswordHash)) return null;
 
         return GenerateJwtToken(user);
@@ -39,7 +31,7 @@ public class AuthService : IAuthService
     private string GenerateJwtToken(Entities.User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"] ?? string.Empty);
+        var key = Encoding.ASCII.GetBytes(configuration["Jwt:Secret"] ?? string.Empty);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {

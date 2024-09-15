@@ -1,7 +1,6 @@
-﻿namespace ecommerce_user.Infrastructure
+﻿namespace ecommerce_user.Infrastructure;
+
+public class JwtConfig
 {
-    public class JwtConfig
-    {
-        public string Secret { get; set; } = string.Empty;
-    }
+    public string Secret { get; set; } = string.Empty;
 }

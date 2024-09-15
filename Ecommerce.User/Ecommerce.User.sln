@@ -2,15 +2,25 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.User", "Ecommerce.User\Ecommerce.User.csproj", "{DC575B40-7007-43AF-BF79-4C643DB6CBF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.User.UnitTests", "Ecommerce.User.UnitTests\Ecommerce.User.UnitTests.csproj", "{B1719CB4-C856-491D-8EFA-6ADCCD80D816}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "..\build\_build.csproj", "{EAEB25CE-239A-4D5A-B1FE-83E42A2DFCED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAEB25CE-239A-4D5A-B1FE-83E42A2DFCED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAEB25CE-239A-4D5A-B1FE-83E42A2DFCED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC575B40-7007-43AF-BF79-4C643DB6CBF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1719CB4-C856-491D-8EFA-6ADCCD80D816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1719CB4-C856-491D-8EFA-6ADCCD80D816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1719CB4-C856-491D-8EFA-6ADCCD80D816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1719CB4-C856-491D-8EFA-6ADCCD80D816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
