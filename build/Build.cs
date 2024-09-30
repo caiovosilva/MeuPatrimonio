@@ -45,7 +45,6 @@ class Build : NukeBuild
     Target StartDatabase => _ => _
         .Executes(() =>
         {
-            DockerTasks
         });
 
 }

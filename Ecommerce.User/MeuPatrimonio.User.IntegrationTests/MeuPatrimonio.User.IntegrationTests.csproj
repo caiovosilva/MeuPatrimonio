@@ -7,6 +7,7 @@
 
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
+        <RootNamespace>Ecommerce.User.IntegrationTests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -28,7 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Ecommerce.User\Ecommerce.User.csproj" />
+      <ProjectReference Include="..\MeuPatrimonio.User\MeuPatrimonio.User.csproj" />
     </ItemGroup>
 
 </Project>
