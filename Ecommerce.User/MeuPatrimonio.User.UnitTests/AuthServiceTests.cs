@@ -35,7 +35,7 @@ public class AuthServiceTests
         var existingUser = new UserEntity(username, email, "hashedPassword");
         _userRepositoryMock.Setup(repo => repo.GetByUsernameAsync(It.IsAny<string>())).ReturnsAsync(existingUser);
 
-        var registerModel = new RegisterModel { Username = username, Email = email, Password = _faker.Internet.Password() };
+        var registerModel = new RegisterModel (username, email, _faker.Internet.Password());
 
         // Act
         var result = await _authService.RegisterAsync(registerModel);
@@ -52,11 +52,11 @@ public class AuthServiceTests
         _userRepositoryMock.Setup(repo => repo.GetByUsernameAsync(It.IsAny<string>())).ReturnsAsync((UserEntity)null);
 
         var registerModel = new RegisterModel
-        {
-            Username = _faker.Internet.UserName(),
-            Email = _faker.Internet.Email(),
-            Password = _faker.Internet.Password()
-        };
+        (
+            Username: _faker.Internet.UserName(),
+            Email: _faker.Internet.Email(),
+            Password: _faker.Internet.Password()
+        );
 
         // Act
         var result = await _authService.RegisterAsync(registerModel);
@@ -74,10 +74,10 @@ public class AuthServiceTests
         _userRepositoryMock.Setup(repo => repo.GetByUsernameAsync(It.IsAny<string>())).ReturnsAsync((UserEntity)null);
 
         var loginModel = new LoginModel
-        {
-            Username = _faker.Internet.UserName(),
-            Password = _faker.Internet.Password()
-        };
+        (
+            Username: _faker.Internet.UserName(),
+            Password: _faker.Internet.Password()
+        );
 
         // Act
         var result = await _authService.LoginAsync(loginModel);
@@ -96,11 +96,7 @@ public class AuthServiceTests
         var existingUser = new UserEntity(username, email, BCrypt.Net.BCrypt.HashPassword(correctPassword));
         _userRepositoryMock.Setup(repo => repo.GetByUsernameAsync(It.IsAny<string>())).ReturnsAsync(existingUser);
 
-        var loginModel = new LoginModel
-        {
-            Username = username,
-            Password = "wrongpassword"
-        };
+        var loginModel = new LoginModel(username, "wrongpassword");
 
         // Act
         var result = await _authService.LoginAsync(loginModel);
@@ -119,11 +115,7 @@ public class AuthServiceTests
         var existingUser = new UserEntity(username, email, BCrypt.Net.BCrypt.HashPassword(password));
         _userRepositoryMock.Setup(repo => repo.GetByUsernameAsync(It.IsAny<string>())).ReturnsAsync(existingUser);
 
-        var loginModel = new LoginModel
-        {
-            Username = username,
-            Password = password
-        };
+        var loginModel = new LoginModel(username, password);
 
         // Act
         var result = await _authService.LoginAsync(loginModel);

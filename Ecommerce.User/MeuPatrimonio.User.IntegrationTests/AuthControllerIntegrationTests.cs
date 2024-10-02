@@ -54,11 +54,11 @@ public class AuthControllerIntegrationTests : IClassFixture<WebApplicationFactor
     {
         // Arrange
         var registerModel = new RegisterModel
-        {
-            Username = _faker.Internet.UserName(),
-            Email = _faker.Internet.Email(),
-            Password = _faker.Internet.Password()
-        };
+        (
+            Username: _faker.Internet.UserName(),
+            Email: _faker.Internet.Email(),
+            Password: _faker.Internet.Password()
+        );
 
         // Act
         var response = await _client.PostAsJsonAsync("/api/auth/register", registerModel);
@@ -75,20 +75,16 @@ public class AuthControllerIntegrationTests : IClassFixture<WebApplicationFactor
     {
         // Arrange
         var registerModel = new RegisterModel
-        {
-            Username = _faker.Internet.UserName(),
-            Email = _faker.Internet.Email(),
-            Password = "SecureP@ssw0rd"
-        };
+        (
+            Username: _faker.Internet.UserName(),
+            Email: _faker.Internet.Email(),
+            Password: "SecureP@ssw0rd"
+        );
 
         // Register the user first
         await _client.PostAsJsonAsync("/api/auth/register", registerModel);
 
-        var loginModel = new LoginModel
-        {
-            Username = registerModel.Username,
-            Password = registerModel.Password
-        };
+        var loginModel = new LoginModel(registerModel.Username, registerModel.Password);
 
         // Act
         var response = await _client.PostAsJsonAsync("/api/auth/login", loginModel);
